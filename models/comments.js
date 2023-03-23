@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class Comment extends Model {}
 
-Comnment.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -42,4 +42,4 @@ Comnment.init(
   }
 );
 
-module.exports = router;
+module.exports = Comment;

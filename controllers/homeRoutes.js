@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
-const sequelize = require("../../config/connection");
+const { User, Post, Comment } = require("../models");
+const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
   Post.findAll({
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/post/:id", withAuth, (req, res) => {
+router.get("/post/:id", (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
@@ -72,7 +72,7 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.sender("login");
+  res.render("login");
 });
 
 router.get("/signup", (req, res) => {
