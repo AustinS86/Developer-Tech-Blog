@@ -36,6 +36,6 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3001, () =>
-    console.log(`Now listening ${PORT}!`)
+    console.log(`Now listening ${PORT}`)
   );
 });
