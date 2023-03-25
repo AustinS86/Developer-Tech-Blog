@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
@@ -56,7 +56,7 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
-      res.session.save(() => {
+      req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
@@ -67,6 +67,43 @@ router.post("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.post("/login", (req, res) => {
+  // console.log(
+  //   "Login request received. Email:",
+  //   req.body.email,
+  //   "Password:",
+  //   req.body.password
+  // ); // Add this line
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((dbUserData) => {
+    if (!dbUserData) {
+      res.status(400).json({ message: "No user with that email!" });
+      return;
+    }
+    console.log("Hashed password from database:", dbUserData.password); // Add this line
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    console.log("Password comparison result:", validPassword); // Add this line
+    // console.log("Input password:", req.body.password);
+    // console.log("Stored password:", dbUserData.password);
+    // console.log("Password check result:", validPassword);
+    if (!validPassword) {
+      res.status(404).json({ message: "Incorrect password!" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: "You are now logged in!" });
+    });
+  });
 });
 
 router.post("/logout", withAuth, (req, res) => {

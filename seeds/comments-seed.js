@@ -14,7 +14,7 @@ const commentData = [
   {
     comment_text:
       "Javascript is easier to understand once you get the syntax down",
-    post_id: 4,
+    post_id: 2,
     user_id: 3,
   },
 ];

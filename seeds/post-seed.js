@@ -8,7 +8,7 @@ const postData = [
   },
   {
     title: "Solar Panels",
-    post_text: "Saving enery one day at a time.",
+    post_text: "Saving energy one day at a time.",
     user_id: 2,
   },
   {

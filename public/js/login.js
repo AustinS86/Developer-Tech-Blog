@@ -2,7 +2,7 @@ const loginFormHandler = async (event) => {
   event.preventDefault();
 
   // Collect values from the login input form
-  const email = document.querySelector("#email").value.trim();
+  const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
   if (email && password) {
@@ -26,3 +26,14 @@ const loginFormHandler = async (event) => {
 document
   .querySelector(".login-form")
   .addEventListener("submit", loginFormHandler);
+
+const showPasswordCheckbox = document.querySelector("#show-password");
+const passwordInput = document.querySelector("#password-login");
+
+showPasswordCheckbox.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+});
