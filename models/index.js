@@ -13,7 +13,7 @@ Post.belongsTo(User, {
 });
 
 //Post has many transactions
-Comment.hasMany(User, {
+Comment.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "CASCADE",
   hooks: true,
@@ -29,12 +29,12 @@ Comment.belongsTo(Post, {
 User.hasMany(Comment, {
   foreignKey: "user_id",
   onDelete: " cascade",
-  hooke: true,
+  hooks: true,
 });
 Post.hasMany(Comment, {
   foreignKey: "post_id",
   onDelete: " cascade",
-  hooke: true,
+  hooks: true,
 });
 
 module.exports = { User, Post, Comment };
