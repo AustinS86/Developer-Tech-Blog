@@ -25,7 +25,10 @@ When you click on the blog link you are brought to the Tech Blog. Just create an
 
 ## Screenshot
 
+![morning-dusk-39498 herokuapp com_](https://user-images.githubusercontent.com/117120566/228070382-17023513-af55-4873-a045-ad53ea99a237.png)
+
 ## Website
+https://morning-dusk-39498.herokuapp.com/
 
 ### NPM'S
 
