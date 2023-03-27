@@ -13,12 +13,20 @@
           <a href="/">Developer Tech Blog</a>
         </h1>
         <nav>
-          <a class="nav-link" href="/">Home</a>
+          <div class="nav-button-container">
+            <a class="nav-link" href="/">Home</a>
+          </div>
           {{#if loggedIn}}
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-            <button id="logout" class="nav-button">Logout</button>
+            <div class="nav-button-container">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </div>
+            <div class="nav-button-container">
+              <button id="logout" class="nav-button">Logout</button>
+            </div>
           {{else}}
-            <a class="nav-link" href="/login">Login</a>
+            <div class="nav-button-container">
+              <a class="nav-link" href="/login">Login</a>
+            </div>
           {{/if}}
         </nav>
       </header>

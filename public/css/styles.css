@@ -107,43 +107,42 @@ main {
 
 nav {
   margin-left: 40px;
+  display: inline-block;
+}
+
+.nav-button-container {
   border: 2px outset #7d7d7d;
   border-radius: 5px;
   background-color: whitesmoke;
   padding: 1.25rem;
   box-shadow: 10px 5px 5px black;
   display: inline-block;
-  text-align: center;
-  padding: 14px;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-size: 30px;
-  font-weight: bolder;
+  margin-right: 10px;
 }
 
 .nav-link,
 .nav-button {
   display: inline-block;
   padding: 8px 12px;
-  margin: 0 4px;
   text-decoration: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  color: #333;
   transition: background-color 0.3s, color 0.3s;
+  color: black;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: #081beb;
+}
 .nav-button:hover {
-  background-color: #333;
-  color: #f8f8f8;
+  font-weight: bolder;
+  color: blue;
+  background-color: whitesmoke;
 }
 
 .nav-button {
   cursor: pointer;
   border: none;
   font-weight: bold;
+  background-color: whitesmoke;
 }
 
 .delete-post-btn {

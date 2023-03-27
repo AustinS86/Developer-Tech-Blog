@@ -70,11 +70,11 @@ router.get("/edit/:id", withAuth, (req, res) => {
     });
 });
 
-router.get("/editusers", withAuth, (req, res) => {
-  Post.findOne({
-    attributes: { eclude: ["password"] },
+router.get("/edituser", withAuth, (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
     where: {
-      id: req.params.id,
+      id: req.session.user_id,
     },
   })
     .then((dbUserData) => {
@@ -83,7 +83,7 @@ router.get("/editusers", withAuth, (req, res) => {
         return;
       }
       const user = dbUserData.get({ plain: true });
-      res.render("edit-users", { user, loggedIn: true });
+      res.render("edit-user", { user, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -91,5 +91,4 @@ router.get("/editusers", withAuth, (req, res) => {
     });
 });
 
-module.exs = router;
 module.exports = router;

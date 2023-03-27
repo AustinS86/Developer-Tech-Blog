@@ -70,12 +70,6 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // console.log(
-  //   "Login request received. Email:",
-  //   req.body.email,
-  //   "Password:",
-  //   req.body.password
-  // ); // Add this line
   User.findOne({
     where: {
       email: req.body.email,
@@ -85,13 +79,7 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "No user with that email!" });
       return;
     }
-    console.log("Hashed password from database:", dbUserData.password); // Add this line
     const validPassword = dbUserData.checkPassword(req.body.password);
-
-    console.log("Password comparison result:", validPassword); // Add this line
-    // console.log("Input password:", req.body.password);
-    // console.log("Stored password:", dbUserData.password);
-    // console.log("Password check result:", validPassword);
     if (!validPassword) {
       res.status(404).json({ message: "Incorrect password!" });
       return;

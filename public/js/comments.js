@@ -5,9 +5,9 @@ const commentFormHandler = async (event) => {
     .querySelector('textarea[name="comment-body"]')
     .value.trim();
 
-  const post_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+  const pathArray = window.location.pathname.split("/");
+  const post_id = pathArray[pathArray.length - 1];
+  console.log("post_id:", post_id);
 
   if (comment_text) {
     const response = await fetch("/api/comments", {
@@ -17,6 +17,9 @@ const commentFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const responseData = await response.json();
+      console.log("Request data:", { post_id, comment_text }); // Added console.log
+      console.log("Response data:", responseData); // Added console.log
       document.location.reload();
     } else {
       alert(response.statusText);

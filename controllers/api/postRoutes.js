@@ -29,13 +29,12 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
     },
     attributes: ["id", "post_text", "title", "created_at"],
-    order: [["created_at", "DESC"]],
     include: [
       {
         model: User,
@@ -43,6 +42,7 @@ router.get("/", (req, res) => {
       },
       {
         model: Comment,
+        as: "comments",
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
